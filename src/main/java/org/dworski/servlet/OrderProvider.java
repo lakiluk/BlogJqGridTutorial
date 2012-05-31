@@ -35,8 +35,7 @@ public class OrderProvider extends HttpServlet {
         int page = Integer.parseInt(req.getParameter("page"));
         int rows = Integer.parseInt(req.getParameter("rows"));
         JqGridTransferObject transferObject = datasource.query(page, rows);
-        String json = objectMapper.writeValueAsString(transferObject);
-        resp.getWriter().print(json);
+        objectMapper.writeValue(resp.getWriter(),transferObject);
         resp.getWriter().close();
     }
 

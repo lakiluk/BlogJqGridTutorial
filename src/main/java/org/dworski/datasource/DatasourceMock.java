@@ -21,14 +21,18 @@ public class DatasourceMock {
         JqGridTransferObject transferObject = new JqGridTransferObject();
         transferObject.setPage(String.valueOf(page));
         transferObject.setRecords(String.valueOf(datasourceSize));
-        transferObject.setRows(orders.subList((page - 1) * rows, page * rows));
-        transferObject.setTotal(datasourceSize / rows);
+        if (page * rows >= orders.size()) {
+            transferObject.setRows(orders.subList((page - 1) * rows, orders.size()));
+        } else {
+            transferObject.setRows(orders.subList((page - 1) * rows, page * rows));
+        }
+        transferObject.setTotal((int) Math.ceil((double) datasourceSize / rows));
         return transferObject;
     }
 
     private void init(int datasourceSize) {
         orders = new ArrayList<Order>(datasourceSize);
-        for (int i = 0; i < datasourceSize; i++) {
+        for (int i = 1; i <= datasourceSize; i++) {
             Order order = createOrder(i);
             orders.add(order);
         }

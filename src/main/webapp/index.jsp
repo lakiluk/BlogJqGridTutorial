@@ -17,10 +17,10 @@
                 height: "auto",
                 colNames:['Order Id','User Id', 'Price','Invoice number'],
                 colModel :[
-                    {name:'orderId', width:100,align:'center', sortable:false},
-                    {name:'userId', width:100, align:'center', sortable:false},
-                    {name:'price', width:100, align:'center', sortable:false},
-                    {name:'invoice',width:500, align:'center', sortable:false}
+                    {width:100,align:'center', sortable:false},
+                    {width:100, align:'center', sortable:false},
+                    {width:100, align:'center', sortable:false},
+                    {width:500, align:'center', sortable:false}
                 ],
                 rowNum:10,
                 rowList:[10,20,30],
